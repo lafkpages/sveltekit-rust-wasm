@@ -1,0 +1,51 @@
+{
+  "name": "sveltekit-rust-wasm",
+  "version": "0.0.1",
+  "scripts": {
+    "setup": "node ./scripts/setup.js",
+    "dev": "pnpm watch:wasm & vite dev",
+    "dev:svelte": "vite dev",
+    "build": "pnpm build:wasm && vite build",
+    "build:wasm": "./node_modules/.bin/wasm-pack build ./wasm --release",
+    "build:svelte": "vite build",
+    "watch:wasm": "cd wasm && cargo watch -i .gitignore -i \"pkg/*\" -i \"target/*\" -s \"wasm-pack build --dev\" -s \"pnpm wasm-patch\" -s \"pnpm i\"",
+    "wasm-patch": "node ./scripts/patchWasm.js",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "prettier --ignore-path .gitignore --ignore-path .prettierignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore --ignore-path .prettierignore .",
+    "format": "prettier --ignore-path .gitignore --ignore-path .prettierignore --write --plugin-search-dir=. .",
+    "build:types": "node ./scripts/makeWasmTypes.js"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^2.1.0",
+    "@sveltejs/adapter-node": "^1.3.1",
+    "@sveltejs/kit": "^1.22.4",
+    "@types/plist": "^3.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-plugin-svelte3": "^3.4.1",
+    "plist": "^3.1.0",
+    "postcss": "^8.4.27",
+    "postcss-load-config": "^4.0.1",
+    "prettier": "^3.0.1",
+    "prettier-plugin-rust": "^0.1.9",
+    "prettier-plugin-svelte": "^3.0.3",
+    "svelte": "^4.1.2",
+    "svelte-check": "^3.4.6",
+    "svelte-preprocess": "^5.0.4",
+    "tslib": "^2.6.1",
+    "typescript": "~5.1.6",
+    "vite": "^4.4.8",
+    "vite-plugin-top-level-await": "^1.3.1",
+    "vite-plugin-wasm": "^3.2.2",
+    "wasm-pack": "^0.12.1"
+  },
+  "optionalDependencies": {
+    "wasm": "file:wasm/pkg"
+  },
+  "type": "module"
+}

@@ -1,0 +1,15 @@
+# SvelteKit generated files
+.svelte-kit
+
+# PNPM lockfile
+pnpm-lock.yaml
+
+# Compiled WebAssembly and stuff
+wasm/target
+wasm/pkg
+
+# Cargo lockfile
+wasm/Cargo.lock
+
+# Licenses
+wasm/LICENSE_*

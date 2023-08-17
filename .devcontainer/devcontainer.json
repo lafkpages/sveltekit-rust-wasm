@@ -1,0 +1,13 @@
+{
+  "name": "sveltekit-rust-wasm",
+  "dockerFile": "Dockerfile",
+  "customizations": {
+    "vscode": {
+      "files.exclude": {
+        "**/.svelte-kit": true,
+        "**/LICENSE*": true,
+        "**/pnpm-lock.yaml": true
+      }
+    }
+  }
+}
